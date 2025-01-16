@@ -10,7 +10,7 @@ interface TransactionCardProps {
 
 const TransactionCard: React.FC<TransactionCardProps> = ({ title, value, color, icon }) => {
   return (
-    <Card sx={{ minWidth: 150, padding: 2, display: 'flex', alignItems: 'center' }}>
+    <Card sx={{ minWidth: 150, padding: 2, display: 'flex', alignItems: 'start' }}>
       <Box sx={{ flexGrow: 1 }}>
         <Typography variant="body2" color="text.secondary">
           {title}

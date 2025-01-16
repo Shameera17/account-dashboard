@@ -1,34 +1,25 @@
-import { Grid } from '@mui/material';
+import { Container, Grid, Stack } from '@mui/material';
 import TransactionCard from 'src/components/transaction-card';
 import { CONFIG } from 'src/config-global';
-
-import { BlankView } from 'src/sections/blank/view';
-
-// ----------------------------------------------------------------------
+import BankInformation from 'src/sections/bank-information';
+import Transactions from 'src/sections/transactions';
 
 export const metadata = { title: `Wallet - ${CONFIG.appName}` };
 
 export default function Page() {
   return (
-    <>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={6}>
-          <TransactionCard
-            title="Total Transactions"
-            value="AED 207,800"
-            color="#FDB721" // Orange
-            icon={<span style={{ fontSize: 24 }}>↓</span>} // Down arrow icon
-          />
+    <Container>
+      <Grid container justifyContent="space-between" spacing={2}>
+        <Grid item xs={12} md={8}>
+          <Transactions />
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <TransactionCard
-            title="Completed Transactions"
-            value="AED 207,800"
-            color="#4CAF50" // Green
-            icon={<span style={{ fontSize: 24 }}>↑</span>} // Up arrow icon
-          />
+        <Grid item xs={12} md={4}>
+          <BankInformation />
         </Grid>
       </Grid>
-    </>
+      <section>{/* Revenue overview */}</section>
+      <section>{/* Income Segment */}</section>
+      <section>{/* Transactions table */}</section>
+    </Container>
   );
 }
