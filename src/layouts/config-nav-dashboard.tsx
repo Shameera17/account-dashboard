@@ -48,27 +48,41 @@ export const navData = [
   {
     subheader: 'Overview 6.0.0',
     items: [
-      { title: 'One', path: paths.dashboard.root, icon: ICONS.dashboard },
-      { title: 'Two', path: paths.dashboard.two, icon: ICONS.ecommerce },
-      { title: 'Three', path: paths.dashboard.three, icon: ICONS.analytics },
+      { title: 'Dashboard', path: paths.dashboard.root, icon: ICONS.dashboard },
+      { title: 'Bookings', path: paths.dashboard.bookings, icon: ICONS.ecommerce },
+      { title: 'Our Clients', path: paths.dashboard.clients, icon: ICONS.analytics },
+      { title: 'Reports', path: paths.dashboard.reports, icon: ICONS.analytics },
+      { title: 'Wallet', path: paths.dashboard.wallet, icon: ICONS.analytics },
+    ],
+  },
+  {
+    subheader: 'Inventory',
+    items: [
+      { title: 'Classes', path: paths.dashboard.classes, icon: ICONS.dashboard },
+      { title: 'Training Sessions', path: paths.dashboard.trainingsessions, icon: ICONS.ecommerce },
+      { title: 'DayPasses', path: paths.dashboard.daypasses, icon: ICONS.analytics },
+      { title: 'Membership', path: paths.dashboard.membership, icon: ICONS.dashboard },
+      { title: 'Amenities', path: paths.dashboard.amenities, icon: ICONS.ecommerce },
+      { title: 'Promotions', path: paths.dashboard.promotions, icon: ICONS.analytics },
+      { title: 'Reviews', path: paths.dashboard.reviews, icon: ICONS.analytics },
     ],
   },
   /**
    * Management
    */
-  {
-    subheader: 'Management',
-    items: [
-      {
-        title: 'Group',
-        path: paths.dashboard.group.root,
-        icon: ICONS.user,
-        children: [
-          { title: 'Four', path: paths.dashboard.group.root },
-          { title: 'Five', path: paths.dashboard.group.five },
-          { title: 'Six', path: paths.dashboard.group.six },
-        ],
-      },
-    ],
-  },
+  // {
+  //   subheader: 'Management',
+  //   items: [
+  //     {
+  //       title: 'Group',
+  //       path: paths.dashboard.group.root,
+  //       icon: ICONS.user,
+  //       children: [
+  //         { title: 'Four', path: paths.dashboard.group.root },
+  //         { title: 'Five', path: paths.dashboard.group.five },
+  //         { title: 'Six', path: paths.dashboard.group.six },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];

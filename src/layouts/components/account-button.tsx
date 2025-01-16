@@ -45,22 +45,13 @@ export function AccountButton({ photoURL, displayName, sx, ...other }: AccountBu
       whileTap="tap"
       whileHover="hover"
       variants={varHover(1.05)}
-      sx={{ p: 0, ...sx }}
+      sx={{ p: 0, width: 40, height: 40, ...sx }}
       {...other}
     >
       <NoSsr fallback={renderFallback}>
-        <AnimateAvatar
-          slotProps={{
-            avatar: { src: photoURL, alt: displayName },
-            overlay: {
-              border: 1,
-              spacing: 2,
-              color: `conic-gradient(${theme.vars.palette.primary.main}, ${theme.vars.palette.warning.main}, ${theme.vars.palette.primary.main})`,
-            },
-          }}
-        >
+        <Avatar src={photoURL} alt={displayName} sx={{ width: 24, height: 24 }}>
           {displayName?.charAt(0).toUpperCase()}
-        </AnimateAvatar>
+        </Avatar>
       </NoSsr>
     </IconButton>
   );

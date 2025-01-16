@@ -2,6 +2,7 @@
 
 import type { NavSectionProps } from 'src/components/nav-section';
 import type { Theme, SxProps, Breakpoint } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
@@ -64,6 +65,13 @@ export function DashboardLayout({ sx, children, header, data }: DashboardLayoutP
   const isNavMini = settings.navLayout === 'mini';
   const isNavHorizontal = settings.navLayout === 'horizontal';
   const isNavVertical = isNavMini || settings.navLayout === 'vertical';
+
+  const retrievePageName = () => {
+    const pathname = window.location.pathname; // "/dashboard/wallet/"
+    const match = pathname.match(/\/dashboard\/([^/]+)/); // Extracts "wallet"
+    const section = match ? match[1].charAt(0).toUpperCase() + match[1].slice(1) : '';
+    return section;
+  };
 
   return (
     <LayoutSection
@@ -141,31 +149,19 @@ export function DashboardLayout({ sx, children, header, data }: DashboardLayoutP
                     sx={{ [theme.breakpoints.up(layoutQuery)]: { display: 'flex' } }}
                   />
                 )}
+                <></>
                 {/* -- Workspace popover -- */}
-                <WorkspacesPopover
+                {/* <WorkspacesPopover
                   data={_workspaces}
                   sx={{ color: 'var(--layout-nav-text-primary-color)' }}
-                />
+                /> */}
+                <Typography variant="h4"> {retrievePageName()} </Typography>
               </>
             ),
             rightArea: (
               <Box display="flex" alignItems="center" gap={{ xs: 0, sm: 0.75 }}>
-                {/* -- Searchbar -- */}
-                <Searchbar data={navData} />
-                {/* -- Language popover -- */}
-                <LanguagePopover
-                  data={[
-                    { value: 'en', label: 'English', countryCode: 'GB' },
-                    { value: 'fr', label: 'French', countryCode: 'FR' },
-                    { value: 'vi', label: 'Vietnamese', countryCode: 'VN' },
-                    { value: 'cn', label: 'Chinese', countryCode: 'CN' },
-                    { value: 'ar', label: 'Arabic', countryCode: 'SA' },
-                  ]}
-                />
                 {/* -- Notifications popover -- */}
                 <NotificationsDrawer data={_notifications} />
-                {/* -- Contacts popover -- */}
-                <ContactsPopover data={_contacts} />
                 {/* -- Settings button -- */}
                 <SettingsButton />
                 {/* -- Account drawer -- */}

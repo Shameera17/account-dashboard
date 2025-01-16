@@ -15,7 +15,7 @@ type Props = {
 export function BlankView({ title = 'Blank' }: Props) {
   return (
     <DashboardContent maxWidth="xl">
-      <Typography variant="h4"> {title} </Typography>
+      {/* <Typography variant="h4"> {title} </Typography> */}
 
       <Box
         sx={{
