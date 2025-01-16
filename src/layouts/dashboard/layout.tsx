@@ -35,6 +35,7 @@ import { ContactsPopover } from '../components/contacts-popover';
 import { WorkspacesPopover } from '../components/workspaces-popover';
 import { navData as dashboardNavData } from '../config-nav-dashboard';
 import { NotificationsDrawer } from '../components/notifications-drawer';
+import PageName from 'src/components/page-name';
 
 // ----------------------------------------------------------------------
 
@@ -69,7 +70,7 @@ export function DashboardLayout({ sx, children, header, data }: DashboardLayoutP
   const retrievePageName = () => {
     const pathname = window.location.pathname; // "/dashboard/wallet/"
     const match = pathname.match(/\/dashboard\/([^/]+)/); // Extracts "wallet"
-    const section = match ? match[1].charAt(0).toUpperCase() + match[1].slice(1) : '';
+    const section = match ? match[1].charAt(0).toUpperCase() + match[1].slice(1) : 'Dashboard';
     return section;
   };
 
@@ -155,7 +156,7 @@ export function DashboardLayout({ sx, children, header, data }: DashboardLayoutP
                   data={_workspaces}
                   sx={{ color: 'var(--layout-nav-text-primary-color)' }}
                 /> */}
-                <Typography variant="h4"> {retrievePageName()} </Typography>
+                <PageName />
               </>
             ),
             rightArea: (
