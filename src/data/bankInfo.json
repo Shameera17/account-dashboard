@@ -1,0 +1,14 @@
+[
+  {
+    "bankName": "Barclay Bank",
+    "accountNumber": "********124",
+    "type": "Savings",
+    "status": "Active"
+  },
+  {
+    "bankName": "HSBC",
+    "accountNumber": "********567",
+    "type": "Savings",
+    "status": "Inactive"
+  }
+]
