@@ -3,7 +3,7 @@
     "lighter": "#C8FAD6",
     "light": "#5BE49B",
     "main": "#00A76F",
-    "dark": "#007867",
+    "dark": "#111111",
     "darker": "#004B50",
     "contrastText": "#FFFFFF"
   },
@@ -34,7 +34,7 @@
   "warning": {
     "lighter": "#FFF5CC",
     "light": "#FFD666",
-    "main": "#FFAB00",
+    "main": "#FF9518",
     "dark": "#B76E00",
     "darker": "#7A4100",
     "contrastText": "#1C252E"
