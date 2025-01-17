@@ -4,6 +4,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Button, Container } from '@mui/material';
 import { BankingRecentTransitions } from '../banking/banking-recent-transitions';
+import { Stack } from '@mui/material';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -42,13 +43,14 @@ export default function TransactionTab() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Stack sx={{ width: '100%' }}>
       <Box
         sx={{
           borderBottom: 1,
           border: 'none',
           display: 'flex',
           justifyContent: 'space-between',
+          padding: '0 25px',
         }}
       >
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
@@ -76,6 +78,6 @@ export default function TransactionTab() {
       <CustomTabPanel value={value} index={1}>
         <Container></Container>
       </CustomTabPanel>
-    </Box>
+    </Stack>
   );
 }

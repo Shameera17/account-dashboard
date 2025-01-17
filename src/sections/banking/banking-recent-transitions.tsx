@@ -54,7 +54,7 @@ export function BankingRecentTransitions({
     return <div>Loading...</div>;
   }
   return (
-    <Container {...other}>
+    <Container maxWidth={false} {...other}>
       <CardHeader title={title} subheader={subheader} sx={{ mb: 3 }} />
 
       <Scrollbar sx={{ minHeight: 462 }}>
