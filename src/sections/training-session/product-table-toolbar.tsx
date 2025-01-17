@@ -102,17 +102,38 @@ export function ProductTableToolbar({ filters, options }: Props) {
   return (
     <>
       <FormControl sx={{ flexShrink: 0, width: { xs: 1, md: 200 } }}>
-        <InputLabel htmlFor="product-filter-type-select-label">Type</InputLabel>
+        <InputLabel
+          sx={{
+            color: 'black', // Set placeholder color to black
+            '&.Mui-focused': {
+              color: 'black', // Ensure color remains black when focused
+            },
+          }}
+          htmlFor="product-filter-type-select-label"
+        >
+          Type
+        </InputLabel>
 
         <Select
           multiple
           value={local.state.type}
           onChange={handleChangetype}
           onClose={handleFiltertype}
-          input={<OutlinedInput label="type" />}
-          renderValue={(selected) => selected.map((value) => value).join(', ')}
+          variant="standard"
+          renderValue={(selected) => selected.join(', ')}
           inputProps={{ id: 'product-filter-type-select-label' }}
-          sx={{ textTransform: 'capitalize' }}
+          sx={{
+            textTransform: 'capitalize',
+            '&:before': {
+              borderBottom: 'none', // Remove default bottom border
+            },
+            '&:after': {
+              borderBottom: 'none', // Remove focus bottom border
+            },
+            '&:hover:not(.Mui-disabled):before': {
+              borderBottom: 'none', // Remove hover bottom border
+            },
+          }}
         >
           {options.types.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -140,16 +161,37 @@ export function ProductTableToolbar({ filters, options }: Props) {
       </FormControl>
 
       <FormControl sx={{ flexShrink: 0, width: { xs: 1, md: 200 } }}>
-        <InputLabel htmlFor="product-filter-price-select-label">Price</InputLabel>
+        <InputLabel
+          sx={{
+            color: 'black', // Set placeholder color to black
+            '&.Mui-focused': {
+              color: 'black', // Ensure color remains black when focused
+            },
+          }}
+          htmlFor="product-filter-price-select-label"
+        >
+          Price
+        </InputLabel>
         <Select
           multiple
           value={local.state.price}
           onChange={handleChangeprice}
           onClose={handleFilterprice}
-          input={<OutlinedInput label="price" />}
+          variant="standard"
           renderValue={(selected) => selected.map((value) => value).join(', ')}
           inputProps={{ id: 'product-filter-price-select-label' }}
-          sx={{ textTransform: 'capitalize' }}
+          sx={{
+            textTransform: 'capitalize',
+            '&:before': {
+              borderBottom: 'none', // Remove default bottom border
+            },
+            '&:after': {
+              borderBottom: 'none', // Remove focus bottom border
+            },
+            '&:hover:not(.Mui-disabled):before': {
+              borderBottom: 'none', // Remove hover bottom border
+            },
+          }}
         >
           {options.prices.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -179,16 +221,36 @@ export function ProductTableToolbar({ filters, options }: Props) {
         </Select>
       </FormControl>
       <FormControl sx={{ flexShrink: 0, width: { xs: 1, md: 200 } }}>
-        <InputLabel htmlFor="product-filter-price-select-label">Status</InputLabel>
+        <InputLabel
+          sx={{
+            color: 'black', // Set placeholder color to black
+            '&.Mui-focused': {
+              color: 'black', // Ensure color remains black when focused
+            },
+          }}
+          htmlFor="product-filter-price-select-label"
+        >
+          Status
+        </InputLabel>
         <Select
           multiple
           value={local.state.status}
           onChange={handleChangestatus}
           onClose={handleFilterstaus}
-          input={<OutlinedInput label="status" />}
           renderValue={(selected) => selected.map((value) => value).join(', ')}
           inputProps={{ id: 'product-filter-status-select-label' }}
-          sx={{ textTransform: 'capitalize' }}
+          sx={{
+            textTransform: 'capitalize',
+            '&:before': {
+              borderBottom: 'none', // Remove default bottom border
+            },
+            '&:after': {
+              borderBottom: 'none', // Remove focus bottom border
+            },
+            '&:hover:not(.Mui-disabled):before': {
+              borderBottom: 'none', // Remove hover bottom border
+            },
+          }}
           variant="standard"
         >
           {options.status.map((option) => (
