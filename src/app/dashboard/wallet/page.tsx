@@ -2,6 +2,7 @@ import { Container, Grid, Stack } from '@mui/material';
 import TransactionCard from 'src/components/transaction-card';
 import { CONFIG } from 'src/config-global';
 import BankInformation from 'src/sections/bank-information';
+import { OverviewBankingView } from 'src/sections/banking/view';
 import RevenueChart from 'src/sections/chart';
 import Transactions from 'src/sections/transactions';
 
@@ -18,12 +19,8 @@ export default function Page() {
           <BankInformation />
         </Grid>
       </Grid>
-      <section>
-        {/* Revenue overview */}
-        <RevenueChart />
-      </section>
-      <section>{/* Income Segment */}</section>
-      <section>{/* Transactions table */}</section>
+
+      <OverviewBankingView />
     </Stack>
   );
 }

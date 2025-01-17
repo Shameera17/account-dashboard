@@ -5,6 +5,8 @@ export interface Transaction {
   date: string;
   status: string;
   amount: number;
+  avatarUrl: string;
+  fullname: string;
 }
 
 export interface Revenue {

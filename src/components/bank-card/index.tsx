@@ -1,6 +1,7 @@
 'use client';
-import { Popover } from '@mui/material';
+import { IconButton, Popover } from '@mui/material';
 import React, { useState } from 'react';
+import { Iconify } from '../iconify';
 
 interface CardProps {
   bankName: string;
@@ -12,7 +13,7 @@ interface CardProps {
 const BankCard: React.FC<CardProps> = ({ bankName, cardNumber, cardType, isActive }) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null); // Changed type to HTMLElement
 
-  const handleClick = (event: React.MouseEvent<HTMLParagraphElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -41,13 +42,9 @@ const BankCard: React.FC<CardProps> = ({ bankName, cardNumber, cardType, isActiv
         <p style={{ fontSize: '10px' }}>{cardType}</p>
       </div>
       <div style={{ textAlign: 'end' }}>
-        <p
-          style={{ fontSize: '13px', fontWeight: 600, cursor: 'pointer' }}
-          aria-describedby={id}
-          onClick={handleClick}
-        >
-          ...
-        </p>
+        <IconButton onClick={handleClick}>
+          <Iconify icon="eva:more-horizontal-fill" color={'white'} />
+        </IconButton>
         <p style={{ fontSize: '10px' }}>{isActive ? 'Active' : 'Inactive'}</p>
       </div>
       <Popover
