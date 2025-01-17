@@ -34,6 +34,7 @@ const BankCard: React.FC<CardProps> = ({ bankName, cardNumber, cardType, isActiv
         display: 'flex',
         justifyContent: 'space-between',
         color: 'white',
+        width: '260px',
       }}
     >
       <div>

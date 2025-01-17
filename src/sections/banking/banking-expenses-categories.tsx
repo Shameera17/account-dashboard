@@ -10,8 +10,8 @@ import CardHeader from '@mui/material/CardHeader';
 import { fCurrency } from 'src/utils/format-number';
 
 import { Chart, useChart, ChartLegends } from 'src/components/chart';
-import { Container } from '@mui/material';
-
+import { Button, Container, Typography } from '@mui/material';
+import backgroundImage from '../../../public/assets/images/card.png';
 // ----------------------------------------------------------------------
 
 type Props = CardProps & {
@@ -82,6 +82,35 @@ export function BankingExpensesCategories({ title, subheader, chart, ...other }:
         <Divider orientation="vertical" flexItem sx={{ borderStyle: 'solid' }} />
 
         <Box></Box>
+        <Box
+          sx={{
+            width: '277px',
+            height: '225px',
+            backgroundImage: `url(/assets/images/card.png)`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '26px 50px',
+          }}
+        >
+          <div>
+            <Typography variant="h4" color="white">
+              Go Premium
+            </Typography>
+            <Typography variant="body1" fontSize={10} color="white">
+              You’re currently on a basic plan, Upgrade to premium to get more from carbon
+            </Typography>
+          </div>
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: 'white', color: 'black', fontSize: '13px' }}
+          >
+            Upgrade
+          </Button>
+        </Box>
       </Box>
     </Container>
   );

@@ -5,23 +5,45 @@ interface TransactionCardProps {
   title: string;
   value: string;
   color: string;
+  secondaryColor: string;
   icon: React.ReactNode;
 }
 
-const TransactionCard: React.FC<TransactionCardProps> = ({ title, value, color, icon }) => {
+const TransactionCard: React.FC<TransactionCardProps> = ({
+  title,
+  value,
+  color,
+  icon,
+  secondaryColor,
+}) => {
   return (
-    <Card sx={{ minWidth: 150, padding: 2, display: 'flex', alignItems: 'start' }}>
-      <Box sx={{ flexGrow: 1 }}>
-        <Typography variant="body2" color="text.secondary">
-          {title}
-        </Typography>
+    <Card
+      sx={{
+        width: '100%',
+        height: '110px',
+        padding: 2,
+        display: 'flex',
+        alignItems: 'start',
+        backgroundColor: color,
+      }}
+    >
+      <Box
+        sx={{
+          height: '100%',
+          flexGrow: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-evenly',
+        }}
+      >
+        <Typography variant="body2">{title}</Typography>
         <Typography variant="h6" component="h2">
           {value}
         </Typography>
       </Box>
       <Box
         sx={{
-          backgroundColor: color,
+          backgroundColor: secondaryColor,
           width: 40,
           height: 40,
           borderRadius: '50%',

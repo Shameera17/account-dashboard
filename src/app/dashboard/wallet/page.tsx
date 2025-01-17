@@ -12,10 +12,10 @@ export default function Page() {
   return (
     <Stack display={'flex'} padding={'20px 30px'} rowGap={'60px'}>
       <Grid container justifyContent="space-between" spacing={2}>
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} md={9}>
           <Transactions />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={3}>
           <BankInformation />
         </Grid>
       </Grid>
