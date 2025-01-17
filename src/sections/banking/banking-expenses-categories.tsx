@@ -94,7 +94,7 @@ export function BankingExpensesCategories({ title, subheader, chart, ...other }:
             colors={chartOptions?.colors}
             labels={chartOptions?.labels}
             icons={chart.icons}
-            sublabels={chart.series.map((item) => fCurrency(item.value))}
+            // sublabels={chart.series.map((item) => fCurrency(item.value))}
             sx={{ gap: 2.5, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}
           />
         </Box>
