@@ -1,5 +1,4 @@
 import type { Theme, SxProps } from '@mui/material/styles';
-import type { IProductTableFilters } from 'src/types/product';
 import type { UseSetStateReturn } from 'src/hooks/use-set-state';
 
 import { useCallback } from 'react';

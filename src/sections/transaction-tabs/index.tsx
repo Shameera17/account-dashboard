@@ -4,7 +4,6 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import { Button, Container } from '@mui/material';
 import { BankingRecentTransitions } from '../banking/banking-recent-transitions';
-import { Iconify } from 'src/components/iconify';
 
 interface TabPanelProps {
   children?: React.ReactNode;

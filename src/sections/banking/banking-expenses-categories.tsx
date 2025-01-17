@@ -2,7 +2,6 @@ import type { CardProps } from '@mui/material/Card';
 import type { ChartOptions } from 'src/components/chart';
 
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
 import Divider from '@mui/material/Divider';
 import { useTheme } from '@mui/material/styles';
 import CardHeader from '@mui/material/CardHeader';
@@ -11,7 +10,6 @@ import { fCurrency } from 'src/utils/format-number';
 
 import { Chart, useChart, ChartLegends } from 'src/components/chart';
 import { Button, Container, Typography } from '@mui/material';
-import backgroundImage from '../../../public/assets/images/card.png';
 // ----------------------------------------------------------------------
 
 type Props = CardProps & {
@@ -43,15 +41,25 @@ export function BankingExpensesCategories({ title, subheader, chart, ...other }:
   ];
 
   const chartSeries = chart.series.map((item) => item.value);
-
   const chartOptions = useChart({
-    chart: { offsetY: 12 },
+    chart: {
+      offsetY: 12,
+      type: 'polarArea',
+    },
     colors: chartColors,
-    // labels: chart.series.map((item) => item.label),
     stroke: { width: 1, colors: [theme.palette.background.paper] },
     fill: { opacity: 0.88 },
     tooltip: { y: { formatter: (value: number) => fCurrency(value) } },
-    plotOptions: { pie: { donut: { labels: { show: false } } } },
+    plotOptions: {
+      polarArea: {
+        rings: { strokeWidth: 0 },
+        spokes: { strokeWidth: 0 },
+      },
+    },
+    labels: chart.series.map((item) => item.label),
+    grid: {
+      show: false,
+    },
     ...chart.options,
   });
 
@@ -81,7 +89,15 @@ export function BankingExpensesCategories({ title, subheader, chart, ...other }:
         />
         <Divider orientation="vertical" flexItem sx={{ borderStyle: 'solid' }} />
 
-        <Box></Box>
+        <Box>
+          <ChartLegends
+            colors={chartOptions?.colors}
+            labels={chartOptions?.labels}
+            icons={chart.icons}
+            sublabels={chart.series.map((item) => fCurrency(item.value))}
+            sx={{ gap: 2.5, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}
+          />
+        </Box>
         <Box
           sx={{
             width: '277px',

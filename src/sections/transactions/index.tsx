@@ -1,6 +1,5 @@
 import { Box, Button, Grid, Typography } from '@mui/material';
 import { ArrowBottomLeftIcon, ArrowTopRightIcon } from '@radix-ui/react-icons';
-import Image from 'next/image';
 import React from 'react';
 import TransactionCard from 'src/components/transaction-card';
 import { CONFIG } from 'src/config-global';

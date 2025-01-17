@@ -1,22 +1,11 @@
 'use client';
 
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import { CONFIG } from 'src/config-global';
-import { DashboardContent } from 'src/layouts/dashboard';
 import { _bankingContacts, _bankingCreditCard, _bankingRecentTransitions } from 'src/_mock';
 
-import { Iconify } from 'src/components/iconify/iconify';
-
-import { BankingContacts } from '../banking-contacts';
-import { BankingQuickTransfer } from '../banking-quick-transfer';
-import { BankingInviteFriends } from '../banking-invite-friends';
-import { BankingCurrentBalance } from '../banking-current-balance';
 import { BankingBalanceStatistics } from '../banking-balance-statistics';
-import { BankingRecentTransitions } from '../banking-recent-transitions';
 import { BankingExpensesCategories } from '../banking-expenses-categories';
-import { Button } from '@mui/material';
 import TransactionTab from 'src/sections/transaction-tabs';
 
 // ----------------------------------------------------------------------
@@ -63,24 +52,14 @@ export function OverviewBankingView() {
           title="Incoming Segment"
           chart={{
             series: [
-              { label: 'Entertainment', value: 22 },
-              { label: 'Fuel', value: 18 },
-              { label: 'Fast food', value: 16 },
-              { label: 'Cafe', value: 17 },
-              { label: 'Сonnection', value: 14 },
-              { label: 'Healthcare', value: 22 },
-              { label: 'Fitness', value: 10 },
-              { label: 'Supermarket', value: 21 },
-            ],
-            icons: [
-              <Iconify icon="streamline:dices-entertainment-gaming-dices-solid" />,
-              <Iconify icon="maki:fuel" />,
-              <Iconify icon="ion:fast-food" />,
-              <Iconify icon="maki:cafe" />,
-              <Iconify icon="basil:mobile-phone-outline" />,
-              <Iconify icon="solar:medical-kit-bold" />,
-              <Iconify icon="ic:round-fitness-center" />,
-              <Iconify icon="solar:cart-3-bold" />,
+              { label: 'Amenities', value: 22 },
+              { label: 'Classes', value: 18 },
+              { label: 'Membership', value: 16 },
+              { label: 'Facilities', value: 20 },
+              { label: 'Trainers', value: 15 },
+              { label: 'Equipment', value: 25 },
+              { label: 'Events', value: 19 },
+              { label: 'Location', value: 17 },
             ],
           }}
         />

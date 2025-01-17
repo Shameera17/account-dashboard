@@ -1,4 +1,3 @@
-import type { IProductTableFilters } from 'src/types/product';
 import type { SelectChangeEvent } from '@mui/material/Select';
 import type { UseSetStateReturn } from 'src/hooks/use-set-state';
 
@@ -10,7 +9,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
-import OutlinedInput from '@mui/material/OutlinedInput';
 
 import { useSetState } from 'src/hooks/use-set-state';
 

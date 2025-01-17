@@ -19,7 +19,6 @@ type ParamsProps = {
 };
 
 export function RenderCellPrice({ params }: ParamsProps) {
-  console.log(params.row.price);
   return fCurrency(params.row.price);
 }
 

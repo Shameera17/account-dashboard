@@ -3,20 +3,9 @@
 import { useState, useEffect, useMemo } from 'react';
 import useSWR from 'swr';
 
-import Card from '@mui/material/Card';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import {
-  DataGrid,
-  gridClasses,
-  GridToolbarExport,
-  GridToolbarContainer,
-  GridToolbarQuickFilter,
-  GridToolbarFilterButton,
-  GridToolbarColumnsButton,
-  GridRowSelectionModel,
-  GridColDef,
-} from '@mui/x-data-grid';
+import { DataGrid, GridToolbarContainer, GridColDef } from '@mui/x-data-grid';
 
 import { Avatar, AvatarGroup, IconButton } from '@mui/material';
 
@@ -42,25 +31,22 @@ export function SessionListView() {
   }>({ type: [], status: [], price: [] });
 
   const [tableData, setTableData] = useState<Session[]>([]);
-  const [selectedRowIds, setSelectedRowIds] = useState<GridRowSelectionModel>([]);
   const [filterButtonEl, setFilterButtonEl] = useState<HTMLButtonElement | null>(null);
 
-  // Only set table data once when the `data` is available.
   useEffect(() => {
     if (data?.length) {
       setTableData(data);
     }
-  }, [data]); // This effect should only run when `data` changes.
+  }, [data]);
 
   const canReset =
     filters.state.price.length > 0 ||
     filters.state.status.length > 0 ||
     filters.state.type.length > 0;
 
-  // UseMemo to prevent unnecessary recalculations of filtered data
   const dataFiltered = useMemo(
     () => applyFilter({ inputData: tableData, filters: filters.state }),
-    [tableData, filters.state] // Only recalculate when tableData or filters change
+    [tableData, filters.state]
   );
 
   const columns: GridColDef[] = [
@@ -103,47 +89,47 @@ export function SessionListView() {
   const getTogglableColumns = () => columns.map((column) => column.field);
 
   return (
-    <Stack height="100%" sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
-      <Card
-        sx={{
-          flexGrow: { md: 1 },
-          display: { md: 'flex' },
-          height: '100%',
-          flexDirection: { md: 'column' },
+    <Stack
+      height="100%"
+      sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', padding: '0px 18px' }}
+    >
+      <DataGrid
+        getRowId={(row) => row.id}
+        disableRowSelectionOnClick
+        rows={dataFiltered}
+        columns={columns}
+        loading={isLoading}
+        getRowHeight={() => 'auto'}
+        pageSizeOptions={[5, 10, 25]}
+        initialState={{ pagination: { paginationModel: { pageSize: 10 } } }}
+        slots={{
+          toolbar: () => (
+            <CustomToolbar
+              filters={filters}
+              canReset={canReset}
+              filteredResults={dataFiltered.length}
+              setFilterButtonEl={setFilterButtonEl}
+              onOpenConfirmDeleteRows={confirmRows.onTrue}
+            />
+          ),
+          noRowsOverlay: () => <EmptyContent />,
+          noResultsOverlay: () => <EmptyContent title="No results found" />,
         }}
-      >
-        <DataGrid
-          getRowId={(row) => row.id}
-          checkboxSelection
-          disableRowSelectionOnClick
-          rows={dataFiltered}
-          columns={columns}
-          loading={isLoading}
-          getRowHeight={() => 'auto'}
-          pageSizeOptions={[5, 10, 25]}
-          initialState={{ pagination: { paginationModel: { pageSize: 10 } } }}
-          slots={{
-            toolbar: () => (
-              <CustomToolbar
-                filters={filters}
-                canReset={canReset}
-                selectedRowIds={selectedRowIds}
-                filteredResults={dataFiltered.length}
-                setFilterButtonEl={setFilterButtonEl}
-                onOpenConfirmDeleteRows={confirmRows.onTrue}
-              />
-            ),
-            noRowsOverlay: () => <EmptyContent />,
-            noResultsOverlay: () => <EmptyContent title="No results found" />,
-          }}
-          slotProps={{
-            panel: { anchorEl: filterButtonEl },
-            toolbar: { setFilterButtonEl },
-            columnsManagement: { getTogglableColumns },
-          }}
-          sx={{ [`& .${gridClasses.cell}`]: { alignItems: 'center', display: 'inline-flex' } }}
-        />
-      </Card>
+        slotProps={{
+          panel: { anchorEl: filterButtonEl },
+          toolbar: { setFilterButtonEl },
+          columnsManagement: { getTogglableColumns },
+        }}
+        sx={{
+          '& .MuiDataGrid-cell': {
+            alignItems: 'center',
+            display: 'inline-flex',
+          },
+          '& .MuiDataGrid-row--borderBottom': {
+            backgroundColor: 'transparent !important',
+          },
+        }}
+      />
     </Stack>
   );
 }
@@ -153,7 +139,6 @@ export function SessionListView() {
 interface CustomToolbarProps {
   canReset: boolean;
   filteredResults: number;
-  selectedRowIds: GridRowSelectionModel;
   onOpenConfirmDeleteRows: () => void;
   filters: UseSetStateReturn<{
     type: string[];
@@ -163,14 +148,7 @@ interface CustomToolbarProps {
   setFilterButtonEl: React.Dispatch<React.SetStateAction<HTMLButtonElement | null>>;
 }
 
-function CustomToolbar({
-  filters,
-  canReset,
-  selectedRowIds,
-  filteredResults,
-  setFilterButtonEl,
-  onOpenConfirmDeleteRows,
-}: CustomToolbarProps) {
+function CustomToolbar({ filters, canReset, filteredResults }: CustomToolbarProps) {
   return (
     <>
       <GridToolbarContainer>
