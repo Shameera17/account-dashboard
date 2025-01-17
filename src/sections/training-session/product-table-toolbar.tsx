@@ -22,13 +22,21 @@ import { usePopover, CustomPopover } from 'src/components/custom-popover';
 // ----------------------------------------------------------------------
 
 type Props = {
-  filters: UseSetStateReturn<IProductTableFilters>;
+  filters: UseSetStateReturn<{
+    type: string[];
+    status: string[];
+    price: string[];
+  }>;
   options: {
-    stocks: {
+    types: {
       value: string;
       label: string;
     }[];
-    publishs: {
+    prices: {
+      value: string;
+      label: string;
+    }[];
+    status: {
       value: string;
       label: string;
     }[];
@@ -38,68 +46,86 @@ type Props = {
 export function ProductTableToolbar({ filters, options }: Props) {
   const popover = usePopover();
 
-  const local = useSetState<IProductTableFilters>({
-    stock: filters.state.stock,
-    publish: filters.state.publish,
+  const local = useSetState<{
+    type: string[];
+    status: string[];
+    price: string[];
+  }>({
+    price: filters.state.price,
+    type: filters.state.type,
+    status: filters.state.status,
   });
 
-  const handleChangeStock = useCallback(
+  const handleChangetype = useCallback(
     (event: SelectChangeEvent<string[]>) => {
       const {
         target: { value },
       } = event;
 
-      local.setState({ stock: typeof value === 'string' ? value.split(',') : value });
+      local.setState({ type: typeof value === 'string' ? value.split(',') : value });
     },
     [local]
   );
 
-  const handleChangePublish = useCallback(
+  const handleChangeprice = useCallback(
     (event: SelectChangeEvent<string[]>) => {
       const {
         target: { value },
       } = event;
 
-      local.setState({ publish: typeof value === 'string' ? value.split(',') : value });
+      local.setState({ price: typeof value === 'string' ? value.split(',') : value });
+    },
+    [local]
+  );
+  const handleChangestatus = useCallback(
+    (event: SelectChangeEvent<string[]>) => {
+      const {
+        target: { value },
+      } = event;
+
+      local.setState({ status: typeof value === 'string' ? value.split(',') : value });
     },
     [local]
   );
 
-  const handleFilterStock = useCallback(() => {
-    filters.setState({ stock: local.state.stock });
-  }, [filters, local.state.stock]);
+  const handleFiltertype = useCallback(() => {
+    filters.setState({ type: local.state.type });
+  }, [filters, local.state.type]);
+  const handleFilterstaus = useCallback(() => {
+    filters.setState({ status: local.state.status });
+  }, [filters, local.state.status]);
 
-  const handleFilterPublish = useCallback(() => {
-    filters.setState({ publish: local.state.publish });
-  }, [filters, local.state.publish]);
+  const handleFilterprice = useCallback(() => {
+    filters.setState({ price: local.state.price });
+  }, [filters, local.state.price]);
 
   return (
     <>
       <FormControl sx={{ flexShrink: 0, width: { xs: 1, md: 200 } }}>
-        <InputLabel htmlFor="product-filter-stock-select-label">Stock</InputLabel>
+        <InputLabel htmlFor="product-filter-type-select-label">Type</InputLabel>
 
         <Select
           multiple
-          value={local.state.stock}
-          onChange={handleChangeStock}
-          onClose={handleFilterStock}
-          input={<OutlinedInput label="Stock" />}
+          value={local.state.type}
+          onChange={handleChangetype}
+          onClose={handleFiltertype}
+          input={<OutlinedInput label="type" />}
           renderValue={(selected) => selected.map((value) => value).join(', ')}
-          inputProps={{ id: 'product-filter-stock-select-label' }}
+          inputProps={{ id: 'product-filter-type-select-label' }}
           sx={{ textTransform: 'capitalize' }}
         >
-          {options.stocks.map((option) => (
+          {options.types.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               <Checkbox
                 disableRipple
                 size="small"
-                checked={local.state.stock.includes(option.value)}
+                checked={local.state.type.includes(option.value)}
               />
               {option.label}
             </MenuItem>
           ))}
           <MenuItem
-            onClick={handleFilterStock}
+            onClick={handleFiltertype}
             sx={{
               justifyContent: 'center',
               fontWeight: (theme) => theme.typography.button,
@@ -114,23 +140,23 @@ export function ProductTableToolbar({ filters, options }: Props) {
       </FormControl>
 
       <FormControl sx={{ flexShrink: 0, width: { xs: 1, md: 200 } }}>
-        <InputLabel htmlFor="product-filter-publish-select-label">Publish</InputLabel>
+        <InputLabel htmlFor="product-filter-price-select-label">Price</InputLabel>
         <Select
           multiple
-          value={local.state.publish}
-          onChange={handleChangePublish}
-          onClose={handleFilterPublish}
-          input={<OutlinedInput label="Publish" />}
+          value={local.state.price}
+          onChange={handleChangeprice}
+          onClose={handleFilterprice}
+          input={<OutlinedInput label="price" />}
           renderValue={(selected) => selected.map((value) => value).join(', ')}
-          inputProps={{ id: 'product-filter-publish-select-label' }}
+          inputProps={{ id: 'product-filter-price-select-label' }}
           sx={{ textTransform: 'capitalize' }}
         >
-          {options.publishs.map((option) => (
+          {options.prices.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               <Checkbox
                 disableRipple
                 size="small"
-                checked={local.state.publish.includes(option.value)}
+                checked={local.state.price.includes(option.value)}
               />
               {option.label}
             </MenuItem>
@@ -139,7 +165,47 @@ export function ProductTableToolbar({ filters, options }: Props) {
           <MenuItem
             disableGutters
             disableTouchRipple
-            onClick={handleFilterPublish}
+            onClick={handleFilterprice}
+            sx={{
+              justifyContent: 'center',
+              fontWeight: (theme) => theme.typography.button,
+              border: (theme) =>
+                `solid 1px ${varAlpha(theme.vars.palette.grey['500Channel'], 0.16)}`,
+              bgcolor: (theme) => varAlpha(theme.vars.palette.grey['500Channel'], 0.08),
+            }}
+          >
+            Apply
+          </MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl sx={{ flexShrink: 0, width: { xs: 1, md: 200 } }}>
+        <InputLabel htmlFor="product-filter-price-select-label">Status</InputLabel>
+        <Select
+          multiple
+          value={local.state.status}
+          onChange={handleChangestatus}
+          onClose={handleFilterstaus}
+          input={<OutlinedInput label="status" />}
+          renderValue={(selected) => selected.map((value) => value).join(', ')}
+          inputProps={{ id: 'product-filter-status-select-label' }}
+          sx={{ textTransform: 'capitalize' }}
+          variant="standard"
+        >
+          {options.status.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              <Checkbox
+                disableRipple
+                size="small"
+                checked={local.state.status.includes(option.value)}
+              />
+              {option.label}
+            </MenuItem>
+          ))}
+
+          <MenuItem
+            disableGutters
+            disableTouchRipple
+            onClick={handleFilterprice}
             sx={{
               justifyContent: 'center',
               fontWeight: (theme) => theme.typography.button,

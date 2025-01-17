@@ -15,48 +15,52 @@ import { chipProps, FiltersBlock, FiltersResult } from 'src/components/filters-r
 type Props = {
   totalResults: number;
   sx?: SxProps<Theme>;
-  filters: UseSetStateReturn<IProductTableFilters>;
+  filters: UseSetStateReturn<{
+    type: string[];
+    status: string[];
+    price: string[];
+  }>;
 };
 
 export function ProductTableFiltersResult({ filters, totalResults, sx }: Props) {
-  const handleRemoveStock = useCallback(
+  const handleRemoveType = useCallback(
     (inputValue: string) => {
-      const newValue = filters.state.stock.filter((item) => item !== inputValue);
+      const newValue = filters.state.type.filter((item) => item !== inputValue);
 
-      filters.setState({ stock: newValue });
+      filters.setState({ type: newValue });
     },
     [filters]
   );
 
-  const handleRemovePublish = useCallback(
+  const handleRemovePrice = useCallback(
     (inputValue: string) => {
-      const newValue = filters.state.publish.filter((item) => item !== inputValue);
+      const newValue = filters.state.price.filter((item) => item !== inputValue);
 
-      filters.setState({ publish: newValue });
+      filters.setState({ price: newValue });
     },
     [filters]
   );
 
   return (
     <FiltersResult totalResults={totalResults} onReset={filters.onResetState} sx={sx}>
-      <FiltersBlock label="Stock:" isShow={!!filters.state.stock.length}>
-        {filters.state.stock.map((item) => (
+      <FiltersBlock label="Type:" isShow={!!filters.state.type.length}>
+        {filters.state.type.map((item) => (
           <Chip
             {...chipProps}
             key={item}
             label={sentenceCase(item)}
-            onDelete={() => handleRemoveStock(item)}
+            onDelete={() => handleRemoveType(item)}
           />
         ))}
       </FiltersBlock>
 
-      <FiltersBlock label="Publish:" isShow={!!filters.state.publish.length}>
-        {filters.state.publish.map((item) => (
+      <FiltersBlock label="Price:" isShow={!!filters.state.price.length}>
+        {filters.state.price.map((item) => (
           <Chip
             {...chipProps}
             key={item}
             label={sentenceCase(item)}
-            onDelete={() => handleRemovePublish(item)}
+            onDelete={() => handleRemovePrice(item)}
           />
         ))}
       </FiltersBlock>

@@ -84,7 +84,7 @@ export interface Session {
   employee: {
     name: string;
     image: string;
-  };
+  }[];
   validity: string;
   location: string;
   people: string;

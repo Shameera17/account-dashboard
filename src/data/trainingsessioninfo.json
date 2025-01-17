@@ -5,7 +5,10 @@
     "sessionName": "Personal Training 1v1",
     "price": "AED 2,000",
     "sessionType": "Single",
-    "employee": { "name": "Employee1", "image": "employee1.jpg" },
+    "employee": [
+      { "name": "John Doe", "image": "https://i.pravatar.cc/50?u=John%20Doe" },
+      { "name": "Jane Smith", "image": "https://i.pravatar.cc/50?u=Jane%20Smith" }
+    ],
     "validity": "21days",
     "location": "Location A",
     "people": "03",
@@ -17,7 +20,10 @@
     "sessionName": "Personal Training 1v1",
     "price": "AED 2,000",
     "sessionType": "Group",
-    "employee": { "name": "Employee2", "image": "employee2.jpg" },
+    "employee": [
+      { "name": "Alice Johnson", "image": "https://i.pravatar.cc/50?u=Alice%20Johnson" },
+      { "name": "Bob Brown", "image": "https://i.pravatar.cc/50?u=Bob%20Brown" }
+    ],
     "validity": "21days",
     "location": "Location B",
     "people": "05",
@@ -29,7 +35,10 @@
     "sessionName": "Group Class",
     "price": "AED 1,500",
     "sessionType": "Group",
-    "employee": { "name": "Employee3", "image": "employee3.jpg" },
+    "employee": [
+      { "name": "Charlie White", "image": "https://i.pravatar.cc/50?u=Charlie%20White" },
+      { "name": "Diana Green", "image": "https://i.pravatar.cc/50?u=Diana%20Green" }
+    ],
     "validity": "30days",
     "location": "Location C",
     "people": "10",
@@ -41,7 +50,10 @@
     "sessionName": "Private Lesson",
     "price": "AED 2,500",
     "sessionType": "Single",
-    "employee": { "name": "Employee4", "image": "employee4.jpg" },
+    "employee": [
+      { "name": "Edward Black", "image": "https://i.pravatar.cc/50?u=Edward%20Black" },
+      { "name": "Fiona Blue", "image": "https://i.pravatar.cc/50?u=Fiona%20Blue" }
+    ],
     "validity": "14days",
     "location": "Location D",
     "people": "01",
@@ -53,7 +65,10 @@
     "sessionName": "Group Class",
     "price": "AED 1,200",
     "sessionType": "Group",
-    "employee": { "name": "Employee5", "image": "employee5.jpg" },
+    "employee": [
+      { "name": "George Red", "image": "https://i.pravatar.cc/50?u=George%20Red" },
+      { "name": "Helen Yellow", "image": "https://i.pravatar.cc/50?u=Helen%20Yellow" }
+    ],
     "validity": "30days",
     "location": "Location E",
     "people": "08",
@@ -65,7 +80,10 @@
     "sessionName": "Beginner Class",
     "price": "AED 800",
     "sessionType": "Group",
-    "employee": { "name": "Employee6", "image": "employee6.jpg" },
+    "employee": [
+      { "name": "Ian Violet", "image": "https://i.pravatar.cc/50?u=Ian%20Violet" },
+      { "name": "Jessica Orange", "image": "https://i.pravatar.cc/50?u=Jessica%20Orange" }
+    ],
     "validity": "14days",
     "location": "Location F",
     "people": "12",
@@ -77,7 +95,10 @@
     "sessionName": "Dance Fitness",
     "price": "AED 1,000",
     "sessionType": "Group",
-    "employee": { "name": "Employee7", "image": "employee7.jpg" },
+    "employee": [
+      { "name": "Kevin Gray", "image": "https://i.pravatar.cc/50?u=Kevin%20Gray" },
+      { "name": "Linda Pink", "image": "https://i.pravatar.cc/50?u=Linda%20Pink" }
+    ],
     "validity": "21days",
     "location": "Location G",
     "people": "15",
@@ -89,7 +110,10 @@
     "sessionName": "Reformer Class",
     "price": "AED 1,800",
     "sessionType": "Group",
-    "employee": { "name": "Employee8", "image": "employee8.jpg" },
+    "employee": [
+      { "name": "Michael Gold", "image": "https://i.pravatar.cc/50?u=Michael%20Gold" },
+      { "name": "Natalie Silver", "image": "https://i.pravatar.cc/50?u=Natalie%20Silver" }
+    ],
     "validity": "30days",
     "location": "Location H",
     "people": "06",
@@ -101,7 +125,10 @@
     "sessionName": "Personal Training",
     "price": "AED 2,200",
     "sessionType": "Single",
-    "employee": { "name": "Employee9", "image": "employee9.jpg" },
+    "employee": [
+      { "name": "Oliver Bronze", "image": "https://i.pravatar.cc/50?u=Oliver%20Bronze" },
+      { "name": "Paula Copper", "image": "https://i.pravatar.cc/50?u=Paula%20Copper" }
+    ],
     "validity": "14days",
     "location": "Location I",
     "people": "01",
@@ -113,7 +140,10 @@
     "sessionName": "Group Ride",
     "price": "AED 900",
     "sessionType": "Group",
-    "employee": { "name": "Employee10", "image": "employee10.jpg" },
+    "employee": [
+      { "name": "Quincy Steel", "image": "https://i.pravatar.cc/50?u=Quincy%20Steel" },
+      { "name": "Rachel Platinum", "image": "https://i.pravatar.cc/50?u=Rachel%20Platinum" }
+    ],
     "validity": "21days",
     "location": "Location J",
     "people": "18",
