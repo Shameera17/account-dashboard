@@ -13,6 +13,7 @@ import { navSectionClasses } from '../classes';
 import { stateClasses, sharedStyles } from '../styles';
 
 import type { NavItemProps, NavItemStateProps } from '../types';
+import { Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -64,7 +65,7 @@ export const NavItem = forwardRef<HTMLButtonElement, NavItemProps>(
           [`& .${navSectionClasses.item.info}`]: slotProps?.info,
           [`& .${navSectionClasses.item.arrow}`]: slotProps?.arrow,
           '&:hover': {
-            backgroundColor: 'transparent', // Remove background change on hover
+            backgroundColor: 'transparent',
           },
         }}
         {...navItem.baseProps}
@@ -76,21 +77,23 @@ export const NavItem = forwardRef<HTMLButtonElement, NavItemProps>(
             className={navSectionClasses.item.icon}
             style={{ marginRight: '30px', color: 'white' }}
           >
-            {navItem.renderIcon}
+            <span style={{ width: 16, height: 16 }}>{navItem.renderIcon}</span>
           </Box>
         )}
 
         {title && (
           <Box component="span" className={navSectionClasses.item.texts}>
-            <Box
-              component="span"
-              className={navSectionClasses.item.title}
+            <Typography
+              variant="h1"
               style={{
                 color: '#111111',
+                fontSize: '13px',
+                fontWeight: 500,
+                lineHeight: '19.5px',
               }}
             >
               {title}
-            </Box>
+            </Typography>
 
             {caption && (
               <Tooltip title={caption} placement="top-start">

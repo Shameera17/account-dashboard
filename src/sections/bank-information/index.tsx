@@ -6,7 +6,7 @@ const BankInformation = () => {
   return (
     <Stack rowGap={1}>
       <Typography variant="h6" component="h2">
-        Bank Information
+        My Bank Information
       </Typography>
       <BankCard
         bankName="Barclay Bank"

@@ -17,6 +17,7 @@ import { EmptyContent } from 'src/components/empty-content';
 import { ProductTableToolbar } from './product-table-toolbar';
 import { ProductTableFiltersResult } from './product-table-filters-result';
 import { Session } from 'src/types/product';
+import SessionModal from '../AddSession/session-modal';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -149,6 +150,7 @@ interface CustomToolbarProps {
 }
 
 function CustomToolbar({ filters, canReset, filteredResults }: CustomToolbarProps) {
+  const [open, setOpen] = useState(false);
   return (
     <>
       <GridToolbarContainer>
@@ -168,7 +170,9 @@ function CustomToolbar({ filters, canReset, filteredResults }: CustomToolbarProp
           alignItems="center"
           justifyContent="flex-end"
         >
-          <Button variant="contained">New Session</Button>
+          <Button onClick={() => setOpen(true)} variant="contained">
+            New Session
+          </Button>
         </Stack>
       </GridToolbarContainer>
 
@@ -179,6 +183,7 @@ function CustomToolbar({ filters, canReset, filteredResults }: CustomToolbarProp
           sx={{ p: 2.5, pt: 0 }}
         />
       )}
+      {open && <SessionModal open={open} closeModal={setOpen} />}
     </>
   );
 }

@@ -8,10 +8,11 @@ import { varAlpha, hideScrollY } from 'src/theme/styles';
 
 import { Logo } from 'src/components/logo';
 import { Scrollbar } from 'src/components/scrollbar';
-import { NavSectionMini, NavSectionVertical } from 'src/components/nav-section';
+import { navSectionClasses, NavSectionMini, NavSectionVertical } from 'src/components/nav-section';
 
 import { NavUpgrade } from '../components/nav-upgrade';
 import { NavToggleButton } from '../components/nav-toggle-button';
+import { Typography } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -67,7 +68,7 @@ export function NavVertical({
             height: '100%',
           }}
         ></div>
-        <div></div>
+        {/* <div></div> */}
       </div>
       <div
         style={{
@@ -78,8 +79,20 @@ export function NavVertical({
       >
         <>
           {slots?.topArea ?? (
-            <Box sx={{ pl: 3.5, pt: 2.5, pb: 1 }}>
-              <Logo />
+            <Box sx={{ pl: 2, pt: 2.5, pb: 1, display: 'flex', alignItems: 'center' }}>
+              <Logo />{' '}
+              <Typography
+                variant="h1"
+                style={{
+                  marginLeft: 25,
+                  color: '#111111',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  lineHeight: '19.5px',
+                }}
+              >
+                Carbon
+              </Typography>
             </Box>
           )}
 
@@ -144,6 +157,7 @@ export function NavVertical({
           },
         }}
       />
+
       {isNavMini ? renderNavMini : renderNavVertical}
     </Box>
   );
