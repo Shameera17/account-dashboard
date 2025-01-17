@@ -1,4 +1,4 @@
-'use client'; // Ensures this is a client-side component
+'use client';
 
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
@@ -6,10 +6,13 @@ import { Typography } from '@mui/material';
 
 const PageName = () => {
   const [pageName, setPageName] = useState<string>('');
-  const pathname = usePathname(); // Replaces router.pathname
+  const pathname = usePathname();
 
   const retrievePageName = () => {
-    const match = pathname?.match(/\/dashboard\/([^/]+)/); // Extracts "wallet"
+    let match = pathname?.match(/\/dashboard\/([^/]+)/);
+    if (match && match[1].includes('-')) {
+      match[1] = match[1].replace(/-/g, ' ');
+    }
     return match ? match[1].charAt(0).toUpperCase() + match[1].slice(1) : 'Dashboard';
   };
 
@@ -17,7 +20,7 @@ const PageName = () => {
     if (pathname) {
       setPageName(retrievePageName());
     }
-  }, [pathname]); // Dependency array includes pathname
+  }, [pathname]);
 
   return <Typography variant="h4">{pageName} </Typography>;
 };

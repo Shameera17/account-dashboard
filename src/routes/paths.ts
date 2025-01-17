@@ -49,7 +49,7 @@ export const paths = {
     reports: `${ROOTS.DASHBOARD}/reports`,
     wallet: `${ROOTS.DASHBOARD}/wallet`,
     classes: `${ROOTS.DASHBOARD}/classes`,
-    trainingsessions: `${ROOTS.DASHBOARD}/trainingsessions`,
+    trainingsessions: `${ROOTS.DASHBOARD}/training-sessions`,
     daypasses: `${ROOTS.DASHBOARD}/daypasses`,
     membership: `${ROOTS.DASHBOARD}/membership`,
     amenities: `${ROOTS.DASHBOARD}/amenities`,

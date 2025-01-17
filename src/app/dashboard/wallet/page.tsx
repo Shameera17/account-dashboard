@@ -1,9 +1,8 @@
-import { Container, Grid, Stack } from '@mui/material';
-import TransactionCard from 'src/components/transaction-card';
+import { Grid, Stack } from '@mui/material';
+
 import { CONFIG } from 'src/config-global';
 import BankInformation from 'src/sections/bank-information';
 import { OverviewBankingView } from 'src/sections/banking/view';
-import RevenueChart from 'src/sections/chart';
 import Transactions from 'src/sections/transactions';
 
 export const metadata = { title: `Wallet - ${CONFIG.appName}` };
