@@ -36,20 +36,61 @@ export function NavVertical({
 }: NavVerticalProps) {
   const theme = useTheme();
 
+  // const renderNavVertical = (
+  //   <>
+  //     {slots?.topArea ?? (
+  //       <Box sx={{ pl: 3.5, pt: 2.5, pb: 1 }}>
+  //         <Logo />
+  //       </Box>
+  //     )}
+
+  //     <Scrollbar fillContent>
+  //       <NavSectionVertical data={data} sx={{ px: 2, flex: '1 1 auto' }} {...other} />
+
+  //       {/* {slots?.bottomArea ?? <NavUpgrade />} */}
+  //     </Scrollbar>
+  //   </>
+  // );
   const renderNavVertical = (
-    <>
-      {slots?.topArea ?? (
-        <Box sx={{ pl: 3.5, pt: 2.5, pb: 1 }}>
-          <Logo />
-        </Box>
-      )}
+    <Box sx={{ display: 'flex', width: '100%', height: '100vh' }}>
+      {/* Left side - Black */}
+      <div
+        style={{
+          position: 'relative',
+          height: '100%',
+        }}
+      >
+        <div
+          style={{
+            width: 70,
+            backgroundColor: 'black',
+            height: '100%',
+          }}
+        ></div>
+        <div></div>
+      </div>
+      <div
+        style={{
+          position: 'absolute',
+          height: '100%',
+          width: '100%',
+        }}
+      >
+        <>
+          {slots?.topArea ?? (
+            <Box sx={{ pl: 3.5, pt: 2.5, pb: 1 }}>
+              <Logo />
+            </Box>
+          )}
 
-      <Scrollbar fillContent>
-        <NavSectionVertical data={data} sx={{ px: 2, flex: '1 1 auto' }} {...other} />
+          <Scrollbar fillContent>
+            <NavSectionVertical data={data} sx={{ px: 2, flex: '1 1 auto' }} {...other} />
 
-        {slots?.bottomArea ?? <NavUpgrade />}
-      </Scrollbar>
-    </>
+            {/* {slots?.bottomArea ?? <NavUpgrade />} */}
+          </Scrollbar>
+        </>
+      </div>
+    </Box>
   );
 
   const renderNavMini = (

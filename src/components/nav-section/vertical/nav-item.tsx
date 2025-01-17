@@ -54,9 +54,7 @@ export const NavItem = forwardRef<HTMLButtonElement, NavItemProps>(
         ref={ref}
         aria-label={title}
         depth={depth}
-        active={active}
-        disabled={disabled}
-        open={open && !active}
+        disableRipple
         sx={{
           ...slotProps?.sx,
           [`& .${navSectionClasses.item.icon}`]: slotProps?.icon,
@@ -65,20 +63,32 @@ export const NavItem = forwardRef<HTMLButtonElement, NavItemProps>(
           [`& .${navSectionClasses.item.caption}`]: slotProps?.caption,
           [`& .${navSectionClasses.item.info}`]: slotProps?.info,
           [`& .${navSectionClasses.item.arrow}`]: slotProps?.arrow,
+          '&:hover': {
+            backgroundColor: 'transparent', // Remove background change on hover
+          },
         }}
-        className={stateClasses({ open: open && !active, active, disabled })}
         {...navItem.baseProps}
         {...other}
       >
         {icon && (
-          <Box component="span" className={navSectionClasses.item.icon}>
+          <Box
+            component="span"
+            className={navSectionClasses.item.icon}
+            style={{ marginRight: '30px', color: 'white' }}
+          >
             {navItem.renderIcon}
           </Box>
         )}
 
         {title && (
           <Box component="span" className={navSectionClasses.item.texts}>
-            <Box component="span" className={navSectionClasses.item.title}>
+            <Box
+              component="span"
+              className={navSectionClasses.item.title}
+              style={{
+                color: '#111111',
+              }}
+            >
               {title}
             </Box>
 

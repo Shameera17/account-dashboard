@@ -14,29 +14,31 @@ const ICONS = {
   job: icon('ic-job'),
   blog: icon('ic-blog'),
   chat: icon('ic-chat'),
-  mail: icon('ic-mail'),
+  pricetag: icon('pricetag'),
   user: icon('ic-user'),
   file: icon('ic-file'),
   lock: icon('ic-lock'),
   tour: icon('ic-tour'),
   order: icon('ic-order'),
   label: icon('ic-label'),
-  blank: icon('ic-blank'),
-  kanban: icon('ic-kanban'),
+  training: icon('training'),
+  review: icon('review'),
   folder: icon('ic-folder'),
-  course: icon('ic-course'),
+  wallet: icon('wallet'),
   banking: icon('ic-banking'),
   booking: icon('ic-booking'),
-  invoice: icon('ic-invoice'),
-  product: icon('ic-product'),
+  classes: icon('classes'),
+  daypass: icon('daypass'),
   calendar: icon('ic-calendar'),
-  disabled: icon('ic-disabled'),
+  badge: icon('badge'),
   external: icon('ic-external'),
-  menuItem: icon('ic-menu-item'),
-  ecommerce: icon('ic-ecommerce'),
-  analytics: icon('ic-analytics'),
-  dashboard: icon('ic-dashboard'),
+  water: icon('water'),
+  ecommerce: icon('calendar'),
+  analytics: icon('user'),
+  dashboard: icon('dashboard'),
   parameter: icon('ic-parameter'),
+  reports: icon('message'),
+  group: icon('group'),
 };
 
 // ----------------------------------------------------------------------
@@ -46,43 +48,26 @@ export const navData = [
    * Overview
    */
   {
-    subheader: 'Overview 6.0.0',
+    subheader: '',
     items: [
       { title: 'Dashboard', path: paths.dashboard.root, icon: ICONS.dashboard },
       { title: 'Bookings', path: paths.dashboard.bookings, icon: ICONS.ecommerce },
       { title: 'Our Clients', path: paths.dashboard.clients, icon: ICONS.analytics },
-      { title: 'Reports', path: paths.dashboard.reports, icon: ICONS.analytics },
-      { title: 'Wallet', path: paths.dashboard.wallet, icon: ICONS.analytics },
+      { title: 'Employees', path: paths.dashboard.reports, icon: ICONS.group },
+      { title: 'Reports', path: paths.dashboard.reports, icon: ICONS.reports },
+      { title: 'Wallet', path: paths.dashboard.wallet, icon: ICONS.wallet },
     ],
   },
   {
     subheader: 'Inventory',
     items: [
-      { title: 'Classes', path: paths.dashboard.classes, icon: ICONS.dashboard },
-      { title: 'Training Sessions', path: paths.dashboard.trainingsessions, icon: ICONS.ecommerce },
-      { title: 'DayPasses', path: paths.dashboard.daypasses, icon: ICONS.analytics },
-      { title: 'Membership', path: paths.dashboard.membership, icon: ICONS.dashboard },
+      { title: 'Classes', path: paths.dashboard.classes, icon: ICONS.classes },
+      { title: 'Training Sessions', path: paths.dashboard.trainingsessions, icon: ICONS.training },
+      { title: 'DayPasses', path: paths.dashboard.daypasses, icon: ICONS.daypass },
+      { title: 'Membership', path: paths.dashboard.membership, icon: ICONS.water },
       { title: 'Amenities', path: paths.dashboard.amenities, icon: ICONS.ecommerce },
-      { title: 'Promotions', path: paths.dashboard.promotions, icon: ICONS.analytics },
-      { title: 'Reviews', path: paths.dashboard.reviews, icon: ICONS.analytics },
+      { title: 'Promotions', path: paths.dashboard.promotions, icon: ICONS.pricetag },
+      { title: 'Reviews', path: paths.dashboard.reviews, icon: ICONS.review },
     ],
   },
-  /**
-   * Management
-   */
-  // {
-  //   subheader: 'Management',
-  //   items: [
-  //     {
-  //       title: 'Group',
-  //       path: paths.dashboard.group.root,
-  //       icon: ICONS.user,
-  //       children: [
-  //         { title: 'Four', path: paths.dashboard.group.root },
-  //         { title: 'Five', path: paths.dashboard.group.five },
-  //         { title: 'Six', path: paths.dashboard.group.six },
-  //       ],
-  //     },
-  //   ],
-  // },
 ];

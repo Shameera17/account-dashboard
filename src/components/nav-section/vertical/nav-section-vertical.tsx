@@ -75,6 +75,7 @@ function Group({ items, render, subheader, slotProps, enabledRootRedirect }: Nav
       {subheader ? (
         <>
           <Subheader
+            style={{ marginLeft: 50 }}
             data-title={subheader}
             open={open}
             onClick={handleToggle}
